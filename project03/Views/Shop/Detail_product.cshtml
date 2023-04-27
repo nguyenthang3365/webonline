@@ -1,0 +1,83 @@
+﻿@model project03.Models.entiy.HangHoa
+@{
+    ViewBag.Title = "Detail_product";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<h2>Detail_product</h2>
+
+
+<!-- Product Image and Description -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/Content/images/@Model.Anh" alt="Product Image" class="img-responsive">
+        </div>
+        <div class="col-md-6">
+            <h1>@Model.TenHang</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan, ex sit amet auctor convallis, tellus odio pellentesque quam, in fermentum sapien odio eu nunc.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan, ex sit amet auctor convallis, tellus odio pellentesque quam, in fermentum sapien odio eu nunc. Nullam quis augue tellus. Fusce ullamcorper, sapien a imperdiet iaculis, mauris mauris pretium ipsum, ut ultricies magna augue id nulla. Fusce at nisl eget dolor bibendum efficitur. Sed id sagittis dolor.</p>
+            <p><strong>Price:</strong> @Model.Gia VNĐ</p>
+            <a href="/Shop/cart?item=@Model.MaHang" class="btn btn-primary btn-lg">Buy Now</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Comments Section -->
+<div class="comments-section">
+
+    <!-- Comments Form -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Leave a Comment</h3>
+            <form action="/shop/post_comment" method="post">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <input name="id_sanpham" value="@Model.MaHang" hidden />
+                    <textarea name="content_post" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Comments List -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Comments</h3>
+            <ul class="list-unstyled">
+                <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">John Doe</h4>
+                        <p class="comment-date">April 25, 2023 at 3:42 pm</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae quam ut ante consequat feugiat sed sit amet enim.</p>
+                        <a href="#" class="reply-link">Reply</a>
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading">Jane Doe</h4>
+                                <p class="comment-date">April 26, 2023 at 10:21 am</p>
+                                <p>Donec id erat id lorem convallis aliquet. Praesent vel ullamcorper augue.</p>
+                                <a href="#" class="reply-link">Reply</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">Bob Smith</h4>
+                        <p class="comment-date">April 27, 2023 at 9:03 am</p>
+                        <p>Curabitur congue metus at nisl cursus, ut varius erat lobortis. Nam sollicitudin risus ac mattis consectetur.</p>
+                        <a href="#" class="reply-link">Reply</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+

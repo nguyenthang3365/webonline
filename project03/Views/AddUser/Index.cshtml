@@ -1,0 +1,32 @@
+﻿@model project03.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>user form</h2>
+        @using (Html.BeginForm("check_info", "AddUser", FormMethod.Post))
+        {
+            <div>@Html.ValidationSummary(true)</div>
+            <div>@Html.LabelFor(model => model.name)</div>
+            <div>@Html.EditorFor(model => model.name)</div>
+            <div>@Html.LabelFor(model => model.adress)</div>
+            <div>@Html.EditorFor(model => model.adress)</div>
+            <div>@Html.LabelFor(model => model.email)</div>
+            <div>@Html.EditorFor(model => model.email)</div>
+            <p><input type="submit" value="create" /></p>
+       
+
+
+        }
+    </div>
+</body>
+</html>

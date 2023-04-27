@@ -1,0 +1,45 @@
+﻿@model project03.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<form method="get" action="@Url.Action("aboad", "login")">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+    </div>
+    <input type="submit" value="Log in" />
+</form>
+
+
+@{
+    var a = new string[] { "laptop", "dien thoai", "iphone" };
+}
+
+
+
+@{
+    foreach (var item in a)
+    {
+        <li>@item</li>
+        <li>@DateTime.Today</li>
+        <li>@DateTime.Now</li>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
