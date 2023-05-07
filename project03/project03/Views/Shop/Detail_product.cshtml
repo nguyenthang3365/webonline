@@ -1,0 +1,89 @@
+﻿@model project03.Models.entiy.preview
+@{
+    ViewBag.Title = "Detail_product";
+    Layout = "~/Views/Shared/index.cshtml";
+}
+
+<h2>Detail_product</h2>
+
+
+<!-- Product Image and Description -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/Content/images/@Model.hanghoa.Anh" alt="Product Image" class="img-responsive">
+        </div>
+        <div class="col-md-6">
+            <h1>@Model.hanghoa.TenHang</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan, ex sit amet auctor convallis, tellus odio pellentesque quam, in fermentum sapien odio eu nunc.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan, ex sit amet auctor convallis, tellus odio pellentesque quam, in fermentum sapien odio eu nunc. Nullam quis augue tellus. Fusce ullamcorper, sapien a imperdiet iaculis, mauris mauris pretium ipsum, ut ultricies magna augue id nulla. Fusce at nisl eget dolor bibendum efficitur. Sed id sagittis dolor.</p>
+            <p><strong>Price:</strong> @Model.hanghoa.Gia VNĐ</p>
+            <a href="/Shop/cart?item=@Model.hanghoa.MaHang" class="btn btn-primary btn-lg">Buy Now</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Comments Section -->
+<div class="comments-section">
+
+    <!-- Comments Form -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Leave a Comment</h3> 
+            <form action="/shop/post_comment" method="post">
+                <div class="form-group">
+                    <label for="comment">Comment  <span class="text-danger">@TempData["err_comment"]</span></label>
+                    <input name="id_sanpham" value="@Model.hanghoa.MaHang" hidden />
+                    <textarea style="width:25%" name="content_post" class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Đánh Giá</label>
+                    <input style="width:5%" name="danhgia" value="0" max="5" min="0" type="number" />
+                    <span class="glyphicon glyphicon-star text-warning"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Comments List -->
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Comments</h3>
+            <ul class="list-unstyled">
+                @foreach (var item in Model.post)
+                {
+                    <li class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading">
+                                @foreach (var a in ViewBag.user)
+                                {
+                                    if (a.Uid == item.id_account)
+                                    {
+                                        @a.Username
+                                    }
+                                }
+                            </h4>
+                            <p class="comment-date">@item.ngay_post</p>
+                            <p>@item.content_post</p>
+                            <p>
+                            @for (int i = 1; i <= item.danhgia; i++)
+                            {
+                                <span class="glyphicon glyphicon-star text-warning"></span>
+                            }
+                             </p>
+                            <a href="#" class="reply-link">Reply</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+
